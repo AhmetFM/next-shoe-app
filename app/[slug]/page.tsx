@@ -1,5 +1,5 @@
 import React from "react";
-import ProductImages from "../components/product-images";
+import ProductImages from "@/components/product-images";
 
 const SingleItemPage = () => {
   return (

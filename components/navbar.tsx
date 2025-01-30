@@ -6,9 +6,9 @@ import HeaderCategories from "./header-categories";
 
 const Navbar = () => {
   return (
-    <header className="h-20 border-b max-w-screen-xl w-full flex items-center justify-between mx-auto px-5 space-x-10 z-10">
+    <nav className="h-20 border-b max-w-screen-xl w-full flex items-center justify-between mx-auto px-5 space-x-10 z-10">
       <div className="text-4xl font-semibold">
-        <Link href="/">e-catalog</Link>
+        <Link href="/">ShoeShop</Link>
       </div>
       <div>
         <ul className="xl:flex items-center gap-8 font-medium hidden">
@@ -31,7 +31,7 @@ const Navbar = () => {
           Cart
         </Link>
       </div>
-    </header>
+    </nav>
   );
 };
 

@@ -1,6 +1,6 @@
-import Banner from "../components/banner";
-import FilterButtons from "../components/filter-buttons";
-import HomeListItems from "../components/home-list-items";
+import Banner from "@/components/banner";
+import FilterButtons from "@/components/filter-buttons";
+import HomeListItems from "@/components/home-list-items";
 
 export default function Home() {
   return (
