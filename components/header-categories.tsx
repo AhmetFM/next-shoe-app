@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import CategoryItem from "./category-item";
+import Link from "next/link";
 
 const HeaderCategories = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -12,7 +13,8 @@ const HeaderCategories = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        Categories
+        <Link href="/categories">Categories</Link>
+
         <FaArrowDown size={12} />
       </div>
       {isHovered && (

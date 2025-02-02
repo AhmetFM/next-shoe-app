@@ -10,41 +10,49 @@ const HomeListItems = () => {
       name: "Nike Air Max 270",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "120",
+      rating: 4.5,
     },
     {
       name: "Nike Air Max 97",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "150",
+      rating: 3,
     },
     {
       name: "Nike Air Max 720",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "180",
+      rating: 5,
     },
     {
       name: "Nike Air Max 90",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "100",
+      rating: 3,
     },
     {
       name: "Nike Air Max 95",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "110",
+      rating: 3,
     },
     {
       name: "Nike Air Max 2090",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "130",
+      rating: 3,
     },
     {
       name: "Nike Air Max 2090",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "130",
+      rating: 3,
     },
     {
       name: "Nike Air Max 2090",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: "130",
+      rating: 3,
     },
   ];
 

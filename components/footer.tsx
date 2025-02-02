@@ -3,31 +3,31 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-12 px-6">
+    <footer className="bg-zinc-900 text-white py-12 px-6 mt-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Shop Column */}
         <div className="space-y-4">
           <h3 className="font-semibold text-lg mb-4">Shop</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/women" className="text-gray-600 hover:text-gray-900">
+              <Link href="/women" className="text-gray-400 hover:text-white">
                 Women
               </Link>
             </li>
             <li>
-              <Link href="/men" className="text-gray-600 hover:text-gray-900">
+              <Link href="/men" className="text-gray-400 hover:text-white">
                 Men
               </Link>
             </li>
             <li>
-              <Link href="/kids" className="text-gray-600 hover:text-gray-900">
+              <Link href="/kids" className="text-gray-400 hover:text-white">
                 Kids
               </Link>
             </li>
             <li>
               <Link
                 href="/new-arrivals"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-400 hover:text-white"
               >
                 New Arrivals
               </Link>
@@ -40,31 +40,22 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Company</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/about" className="text-gray-600 hover:text-gray-900">
+              <Link href="/about" className="text-gray-400 hover:text-white">
                 About us
               </Link>
             </li>
             <li>
-              <Link
-                href="/stores"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/stores" className="text-gray-400 hover:text-white">
                 Stores
               </Link>
             </li>
             <li>
-              <Link
-                href="/careers"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/careers" className="text-gray-400 hover:text-white">
                 Careers
               </Link>
             </li>
             <li>
-              <Link
-                href="/contacts"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/contacts" className="text-gray-400 hover:text-white">
                 Contacts
               </Link>
             </li>
@@ -76,30 +67,24 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Support</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/help" className="text-gray-600 hover:text-gray-900">
+              <Link href="/help" className="text-gray-400 hover:text-white">
                 Help
               </Link>
             </li>
             <li>
-              <Link
-                href="/delivery"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/delivery" className="text-gray-400 hover:text-white">
                 Delivery
               </Link>
             </li>
             <li>
-              <Link
-                href="/returns"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/returns" className="text-gray-400 hover:text-white">
                 Returns & Refunds
               </Link>
             </li>
             <li>
               <Link
                 href="/size-guide"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-400 hover:text-white"
               >
                 Size Guide
               </Link>
@@ -110,11 +95,11 @@ const Footer = () => {
         {/* Contacts Column */}
         <div className="space-y-4">
           <h3 className="font-semibold text-lg mb-4">Contacts</h3>
-          <p className="text-gray-600">+44 204 578-10-92</p>
+          <p className="text-gray-500">+90 555 555 55 55</p>
           <div className="flex space-x-4">
             <Link
               href="https://twitter.com"
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-400 hover:text-white"
             >
               <svg
                 className="w-6 h-6"
@@ -127,7 +112,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://instagram.com"
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-400 hover:text-white"
             >
               <svg
                 className="w-6 h-6"
@@ -144,7 +129,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://facebook.com"
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-400 hover:text-white"
             >
               <svg
                 className="w-6 h-6"
@@ -161,7 +146,7 @@ const Footer = () => {
             </Link>
             <Link
               href="https://youtube.com"
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-400 hover:text-white"
             >
               <svg
                 className="w-6 h-6"
@@ -182,7 +167,7 @@ const Footer = () => {
 
       {/* Copyright Section */}
       <div className="mt-12 pt-8 border-t border-gray-200">
-        <p className="text-center text-gray-600">
+        <p className="text-center text-gray-500">
           &copy; {new Date().getFullYear()} Shoe Shop. All rights reserved.
         </p>
       </div>

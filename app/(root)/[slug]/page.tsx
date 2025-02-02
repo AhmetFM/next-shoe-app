@@ -1,12 +1,33 @@
 import React from "react";
 import ProductImages from "@/components/product-images";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const SingleItemPage = () => {
   return (
     <div className="max-w-screen-xl mx-auto w-full mt-5 px-4">
-      <span className="text-gray-500 text-sm">
-        Shoes / Nike / Zoom / <b>Vomero 5</b>
-      </span>
+      {/* Breadcrumbs */}
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/categories">Categories</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Nike Zoom Vomero 5</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="flex h-full w-full mt-10 gap-16">
         <div className="flex-1">
           <ProductImages />

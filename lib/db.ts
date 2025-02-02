@@ -2,6 +2,7 @@
   name: string;
   description: string;
   price: string;
+  rating: number;
 };
 /*
 export async function getAllProducts() {
