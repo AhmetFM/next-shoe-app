@@ -8,7 +8,7 @@ import HeaderCategories from "./header-categories";
 import HamburgerMenu from "./hamburger-menu";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="h-20 border-b max-w-screen-xl w-full flex items-center justify-between mx-auto px-5 space-x-10 z-10">

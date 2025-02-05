@@ -1,17 +1,27 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 
-const Searchbar = () => {
+const Searchbar = ({
+  small,
+  className,
+}: {
+  small?: boolean;
+  className?: string;
+}) => {
   return (
-    <div className="md:flex hidden items-center justify-center relative flex-1">
+    <div
+      className={`md:flex hidden items-center justify-center relative flex-1 ${className}`}
+    >
       <input
         type="search"
         id="search"
-        className="w-full bg-gray-100 px-4 py-2 rounded-full outline-none"
-        placeholder="Search Product"
+        className={`w-full bg-gray-100 ${
+          small ? "px-2 py-1 pl-10" : "px-4 py-2 pl-12"
+        }  rounded-full outline-none`}
+        placeholder="Search"
       />
-      <label htmlFor="search" className="absolute right-4">
-        <FiSearch size={24} fill="transparent" color="grey" />
+      <label htmlFor="search" className="absolute left-4">
+        <FiSearch size={small ? "16" : "24"} fill="transparent" color="grey" />
       </label>
     </div>
   );
