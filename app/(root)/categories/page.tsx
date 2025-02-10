@@ -12,7 +12,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { products } from "@/lib/db";
@@ -27,6 +27,8 @@ import Product from "@/components/product/product";
 import ProductSkeleton from "@/components/product/product-skeleton";
 import { ProductState } from "@/lib/validators/product-validator";
 import { Slider } from "@/components/ui/slider";
+import { useRouter, useSearchParams } from "next/navigation";
+import { set } from "zod";
 
 const SORT_OPTIONS = [
   { name: "None", value: "none" },
@@ -96,6 +98,10 @@ const PRICE_FILTERS = {
 const DEFAULT_CUSTOM_PRICE = [0, 10000] as [number, number];
 
 const Categories = () => {
+  //Checking if user clicks only one brand
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const brandFromParams = searchParams.get("brand");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [filter, setFilter] = useState<ProductState>({
     brand: ["nike", "adidas", "puma", "reebok", "under armour"],
@@ -120,6 +126,25 @@ const Categories = () => {
       range: DEFAULT_CUSTOM_PRICE,
     },
   });
+
+  useEffect(() => {
+    if (brandFromParams)
+      if (
+        BRAND_FILTERS.options.filter((o) => o.value === brandFromParams)
+          .length === 0
+      ) {
+        /* Reset filter if search param not valid */
+        router.replace("/categories", undefined);
+        setFilter((prev) => ({
+          ...prev,
+          brand: ["nike", "adidas", "puma", "reebok", "under armour"],
+        }));
+      }
+    setFilter((prev) => ({
+      ...prev,
+      brand: prev.brand.filter((b) => b === brandFromParams),
+    }));
+  }, [brandFromParams]);
 
   /* const { data } = useQuery({
     queryKey: ["products"],
@@ -167,6 +192,18 @@ const Categories = () => {
             <BreadcrumbItem>
               <BreadcrumbLink href="/categories">Categories</BreadcrumbLink>
             </BreadcrumbItem>
+
+            {brandFromParams && filter.brand.length === 1 && (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/categories">
+                    {brandFromParams.charAt(0).toUpperCase() +
+                      brandFromParams.substring(1)}
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+              </>
+            )}
           </BreadcrumbList>
         </Breadcrumb>
       </div>

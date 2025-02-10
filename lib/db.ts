@@ -1,4 +1,4 @@
-import { Product } from "@/types";
+import { TProduct } from "@/types";
 
 /* export type SingleProductType = {
   name: string;
@@ -16,7 +16,7 @@ export async function getAllProducts() {
  */
 
 
-export const products:Product[] = [
+export const products:TProduct[] = [
   {
     id: "1",
     imageId: "1",
