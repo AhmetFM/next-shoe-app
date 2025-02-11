@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ProductImages from "@/components/product-images";
 import {
   Breadcrumb,
@@ -12,6 +12,8 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { FaStarHalfStroke } from "react-icons/fa6";
 import { products } from "@/lib/db";
 import { Heart, ShoppingBag, Truck } from "lucide-react";
+import Product from "@/components/product/product";
+import ProductSkeleton from "@/components/product/product-skeleton";
 
 const SingleItemPage = async ({
   params,
@@ -41,8 +43,12 @@ const SingleItemPage = async ({
   };
 
   if (!product) {
+    //TODO:Create a not found page
     return <></>;
   }
+
+  //TODO: Update page after created backend and database
+
   return (
     <div className="max-w-screen-xl mx-auto w-full mt-5 px-4">
       {/* Breadcrumbs */}
@@ -77,7 +83,7 @@ const SingleItemPage = async ({
         <div className="flex-1">
           {/* Desc */}
           <div className="flex flex-col gap-4 lg:gap-8">
-            <h2 className="font-semibold text-2xl">Nike Zoom Vomero 5</h2>
+            <h2 className="font-semibold text-2xl">{product.name}</h2>
             <div className="flex items-center gap-2">
               {calculateRatingStars(product?.rating)}
             </div>
@@ -121,8 +127,36 @@ const SingleItemPage = async ({
           </span>
         </div>
       </div>
+      {/* Desc */}
+      <div className="mt-12">
+        <h2 className="font-semibold text-2xl">Description</h2>
+        <div className="mt-4">
+          <p className="text-gray-500">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            voluptates, quod, quia, voluptate quae voluptatem quibusdam
+          </p>
+        </div>
+      </div>
+      <div className="mt-12">
+        <span className="font-semibold text-xl">More Shoes</span>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <Suspense fallback={<SkeletonProduct />}>
+            {products.slice(0, 4).map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                isBtnVisible={false}
+              />
+            ))}
+          </Suspense>
+        </div>
+      </div>
     </div>
   );
+};
+
+const SkeletonProduct = () => {
+  return <>{[...Array(4).map((_, i) => <ProductSkeleton />)]}</>;
 };
 
 export default SingleItemPage;

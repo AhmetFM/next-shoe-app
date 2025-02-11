@@ -5,7 +5,13 @@ import { FaStarHalfStroke } from "react-icons/fa6";
 import { TProduct } from "@/types";
 import Link from "next/link";
 
-const Product = ({ product }: { product: TProduct }) => {
+const Product = ({
+  product,
+  isBtnVisible = true,
+}: {
+  product: TProduct;
+  isBtnVisible?: boolean;
+}) => {
   const calculateRatingStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0;
@@ -25,7 +31,11 @@ const Product = ({ product }: { product: TProduct }) => {
   };
 
   return (
-    <div className="flex-1 w-full gap-4">
+    <div
+      className={`flex-1 w-full min-w-[300px] gap-4 ${
+        !isBtnVisible && "bg-zinc-200/75 rounded-md"
+      }`}
+    >
       <div className="relative w-full min-h-[300px] rounded-md">
         {/* Image */}
         <Link href={`/${product.id}`}>
@@ -37,7 +47,7 @@ const Product = ({ product }: { product: TProduct }) => {
           />
         </Link>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className={`flex flex-col gap-2  ${!isBtnVisible && "px-4 py-2"}`}>
         {/* Details */}
         <div className="flex items-center justify-between w-full font-medium">
           <span className="text-xl font-medium">{product.name}</span>
@@ -52,9 +62,11 @@ const Product = ({ product }: { product: TProduct }) => {
           </div>
         </div>
         <span className="text-2xl font-medium">${product.price}</span>
-        <button className="px-4 py-3 self-center border-gray-900 border rounded-full w-3/4 mx-4 my-3 text-gray-900 hover:bg-gray-700 hover:border-white hover:text-white font-medium">
-          Add to Cart
-        </button>
+        {isBtnVisible && (
+          <button className="px-4 py-3 self-center border-gray-900 border rounded-full w-3/4 mx-4 my-3 text-gray-900 hover:bg-gray-700 hover:border-white hover:text-white font-medium">
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );
