@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+"use client";
+import React, { Suspense, useState } from "react";
 import ProductImages from "@/components/product-images";
 import {
   Breadcrumb,
@@ -15,12 +16,12 @@ import { Heart, ShoppingBag, Truck } from "lucide-react";
 import Product from "@/components/product/product";
 import ProductSkeleton from "@/components/product/product-skeleton";
 
-const SingleItemPage = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
-  const slug = (await params).slug;
+const SingleItemPage = ({ params }: { params: { slug: string } }) => {
+  const [selectedShoe, setSelectedShoe] = useState({
+    color: 0,
+    size: 0,
+  });
+  const slug = params.slug;
 
   const product = products.find((p) => p.id === slug);
 
@@ -94,19 +95,55 @@ const SingleItemPage = async ({
           <div className="mt-12">
             Color{"  "}
             <span className="text-gray-400">
-              • {" " + product.color.toLocaleUpperCase()}
+              •{" "}
+              {" " + product.color[selectedShoe.color || 0].toLocaleUpperCase()}
             </span>
-            <img
-              src="/images/single-item-image.png"
-              alt="imageColor"
-              className="w-14 h-20 aspect-auto mt-4 rounded-md border border-zinc-900/40"
-            />
+            <div className="flex gap-2">
+              {product.color.map((c, i) => (
+                <button
+                  key={c}
+                  onClick={() =>
+                    setSelectedShoe((prev) => ({
+                      ...prev,
+                      color: i,
+                    }))
+                  }
+                >
+                  <img
+                    src="/images/single-item-image.png"
+                    alt={product.name + product.color[i]}
+                    className={`w-14 h-20 aspect-auto mt-4 rounded-md border duration-200 ${
+                      i === selectedShoe.color
+                        ? "border-zinc-900/80"
+                        : "border-zinc-900/40"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
           </div>
           <div className="mt-12">
             Size{"  "}
             <span className="text-gray-400">• Eu Men</span>
-            <div className=" px-3 py-2 border w-16 h-10 flex items-center justify-center rounded-md">
-              {product.size}
+            <div className="flex gap-1">
+              {product.size.map((s, i) => (
+                <button
+                  key={s}
+                  onClick={() =>
+                    setSelectedShoe((prev) => ({
+                      ...prev,
+                      size: i,
+                    }))
+                  }
+                  className={`px-3 py-2 border w-16 h-10 flex items-center justify-center rounded-md duration-200 ${
+                    i === selectedShoe.size
+                      ? "border-zinc-900/80 bg-zinc-200 font-semibold"
+                      : "border-zinc-900/20"
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
             </div>
             <span className="text-xs text-green-700 font-light">
               Size guide

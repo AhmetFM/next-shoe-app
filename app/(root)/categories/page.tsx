@@ -126,25 +126,25 @@ const Categories = () => {
       range: DEFAULT_CUSTOM_PRICE,
     },
   });
-
-  useEffect(() => {
-    if (brandFromParams)
-      if (
-        BRAND_FILTERS.options.filter((o) => o.value === brandFromParams)
-          .length === 0
-      ) {
-        /* Reset filter if search param not valid */
-        router.replace("/categories", undefined);
-        setFilter((prev) => ({
-          ...prev,
-          brand: ["nike", "adidas", "puma", "reebok", "under armour"],
-        }));
-      }
-    setFilter((prev) => ({
-      ...prev,
-      brand: prev.brand.filter((b) => b === brandFromParams),
-    }));
-  }, [brandFromParams]);
+  // useEffect(() => {
+  //     if (brandFromParams) {
+  //       if (
+  //         BRAND_FILTERS.options.filter((o) => o.value === brandFromParams)
+  //           .length === 0
+  //       ) {
+  //         /* Reset filter if search param not valid */
+  //         setFilter((prev) => ({
+  //           ...prev,
+  //           brand: ["nike", "adidas", "puma", "reebok", "under armour"],
+  //         }));
+  //         router.replace("/categories", undefined);
+  //       }
+  //     }
+  //     setFilter((prev) => ({
+  //       ...prev,
+  //       brand: prev.brand.filter((b) => b === brandFromParams),
+  //     }));
+  //   }, [brandFromParams]);
 
   /* const { data } = useQuery({
     queryKey: ["products"],

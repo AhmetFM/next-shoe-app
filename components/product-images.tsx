@@ -1,6 +1,7 @@
 "use client";
+import { X } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const images = [
   {
@@ -23,20 +24,57 @@ const images = [
 
 const ProductImages = () => {
   const [index, setIndex] = useState<number>(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="">
+      {isExpanded && (
+        <div className="fixed top-0 left-0 bg-black/75 z-50 w-full h-full">
+          <div className="h-[100dvh] w-[90dvw] md:h-[70dvh] md:w-[50dvw] object-contain absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+            <Image
+              src={images[index].url}
+              alt=""
+              fill
+              sizes="50vw"
+              className="object-contain rounded-md"
+            />
+          </div>
+          <button
+            className="w-6 h-6 absolute right-6 top-6"
+            onClick={() => setIsExpanded(false)}
+          >
+            <X color="white" />
+          </button>
+        </div>
+      )}
       <div className="relative h-[500px]">
-        <Image
-          src={images[index].url}
-          alt=""
-          fill
-          sizes="50vw"
-          className="object-cover rounded-md"
-        />
+        <button className="cursor-pointer" onClick={() => setIsExpanded(true)}>
+          <Image
+            src={images[index].url}
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-cover rounded-md"
+          />
+        </button>
       </div>
       <div className="flex justify-between gap-4 mt-2 ">
         {images.map((image, i) => (
-          <div
+          <button
             className="w-1/4 h-32 relative gap-4 mt-8 cursor-pointer"
             key={image.id}
             onClick={() => setIndex(i)}
@@ -48,7 +86,7 @@ const ProductImages = () => {
               sizes="30vw"
               className="object-cover rounded-md"
             />
-          </div>
+          </button>
         ))}
       </div>
     </div>
