@@ -12,7 +12,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //import { useQuery } from "@tanstack/react-query";
 //import axios from "axios";
 import { products } from "@/lib/db";
@@ -27,7 +27,7 @@ import Product from "@/components/product/product";
 //import ProductSkeleton from "@/components/product/product-skeleton";
 import { ProductState } from "@/lib/validators/product-validator";
 import { Slider } from "@/components/ui/slider";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 //import { set } from "zod";
 
 const SORT_OPTIONS = [
@@ -99,7 +99,6 @@ const DEFAULT_CUSTOM_PRICE = [0, 10000] as [number, number];
 
 const Categories = () => {
   //Checking if user clicks only one brand
-  const router = useRouter();
   const searchParams = useSearchParams();
   const brandFromParams = searchParams.get("brand");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
