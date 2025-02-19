@@ -65,8 +65,9 @@ const SingleItemPage = ({ params }: { params: { slug: string } }) => {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink href="/categories?brand=nike">
-              {product?.brand.charAt(0).toUpperCase() +
-                product?.brand.substring(1)!}
+              {product.brand &&
+                product?.brand.charAt(0).toUpperCase() +
+                  product?.brand.substring(1)}
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -193,7 +194,7 @@ const SingleItemPage = ({ params }: { params: { slug: string } }) => {
 };
 
 const SkeletonProduct = () => {
-  return <>{[...Array(4).map((_, i) => <ProductSkeleton />)]}</>;
+  return <>{[...Array(4).map((_, i) => <ProductSkeleton key={i} />)]}</>;
 };
 
 export default SingleItemPage;

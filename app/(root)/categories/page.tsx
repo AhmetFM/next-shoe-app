@@ -13,8 +13,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+//import { useQuery } from "@tanstack/react-query";
+//import axios from "axios";
 import { products } from "@/lib/db";
 import {
   DropdownMenu,
@@ -24,11 +24,11 @@ import {
 import { ChevronDown, ChevronLeft, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Product from "@/components/product/product";
-import ProductSkeleton from "@/components/product/product-skeleton";
+//import ProductSkeleton from "@/components/product/product-skeleton";
 import { ProductState } from "@/lib/validators/product-validator";
 import { Slider } from "@/components/ui/slider";
 import { useRouter, useSearchParams } from "next/navigation";
-import { set } from "zod";
+//import { set } from "zod";
 
 const SORT_OPTIONS = [
   { name: "None", value: "none" },
