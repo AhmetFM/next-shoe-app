@@ -12,7 +12,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 //import { useQuery } from "@tanstack/react-query";
 //import axios from "axios";
 import { products } from "@/lib/db";
@@ -488,4 +488,12 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+const CategoriesPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Categories />
+    </Suspense>
+  );
+};
+
+export default CategoriesPage;
