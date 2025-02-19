@@ -21,7 +21,13 @@ const Searchbar = ({
         placeholder="Search"
       />
       <label htmlFor="search" className="absolute left-4">
-        <FiSearch size={small ? "16" : "24"} fill="transparent" color="grey" />
+        <button className="w-full h-full flex items-center justify-center">
+          <FiSearch
+            size={small ? "16" : "24"}
+            fill="transparent"
+            color="grey"
+          />
+        </button>
       </label>
     </div>
   );
